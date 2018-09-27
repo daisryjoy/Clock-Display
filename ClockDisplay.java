@@ -81,4 +81,21 @@ public class ClockDisplay
         displayString = hours.getDisplayValue() + ":" + 
                         minutes.getDisplayValue();
     }
+    
+    public void get24HourInternalDisplay()
+    {
+        int hour = hours.getValue();
+        if (hour > 12) 
+        {
+            hour = hour - 12; 
+        } else if (hour < 10) 
+        {
+            return "0" + hour; 
+        } else 
+        {
+            return "" + hour;
+        }
+        
+        
+    }
 }
