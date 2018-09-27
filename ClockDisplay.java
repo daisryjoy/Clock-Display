@@ -17,6 +17,7 @@ public class ClockDisplay
     private NumberDisplay hours;
     private NumberDisplay minutes;
     private String displayString;    // simulates the actual display
+    private String meridian;
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
@@ -26,6 +27,7 @@ public class ClockDisplay
     {
         hours = new NumberDisplay(24);
         minutes = new NumberDisplay(60);
+        meridian = "";
         updateDisplay();
     }
 
@@ -38,6 +40,7 @@ public class ClockDisplay
     {
         hours = new NumberDisplay(24);
         minutes = new NumberDisplay(60);
+        meridian = "";
         setTime(hour, minute);
     }
 
@@ -79,23 +82,51 @@ public class ClockDisplay
     private void updateDisplay()
     {
         displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+                        minutes.getDisplayValue() + meridian;
     }
     
-    public void get24HourInternalDisplay()
+    public String get24HourInternalDisplay()
     {
-        int hour = hours.getValue();
+        int hour = hours.getValue(); 
+        
         if (hour > 12) 
         {
-            hour = hour - 12; 
+           hour = hours.getValue() - 12;
         } else if (hour < 10) 
         {
-            return "0" + hour; 
+            value = "0" + hour; 
         } else 
         {
-            return "" + hour;
+            value = "" + hour;
         }
         
+        return value; 
         
-    }
+        int hour = hours.getValue();  
+       
+        if(hour >= 12 && hour < 24) {
+            meridian = "pm";
+        }
+        else {
+            meridian = "am";
+        } 
+        
+        if(hours.getValue() > 12)
+            setTime((hours.getValue() %12), minutes.getValue());
+        else if (hours.getValue() <= 12){
+            
+        if (hours.getValue() %12 == 0)
+             setTime(12, minutes.getValue()); 
+             
+        else setTime(hours.getValue(), minutes.getValue());
+            }
+ 
+         return displayString;
+    }   
+    
+    
+    
+    /*
+       */
+     
 }
