@@ -91,24 +91,11 @@ public class ClockDisplay
     {
         int hour = hours.getValue();  
        
-        if(hour >= 12 && hour < 24) {
-            meridian = "pm";
-        }
-        else {
-            meridian = "am";
-        } 
-        
-        if(hours.getValue() > 12)
-            setTime((hours.getValue() %12), minutes.getValue());
-        else if (hours.getValue() <= 12){
-            
-        if (hours.getValue() %12 == 0)
-             setTime(12, minutes.getValue()); 
-             
-        else setTime(hours.getValue(), minutes.getValue());
-            }
- 
-        
+        if(hour %12 == 0)
+      displayString = "12:" + minutes.getDisplayValue();
+      else 
+      displayString = hours.getDisplayValue() + ":" + minutes.getDisplayValue();
+       
          return displayString;
        
     }
