@@ -85,23 +85,8 @@ public class ClockDisplay
                         minutes.getDisplayValue() + meridian;
     }
     
-    public String get24HourInternalDisplay()
+     public String get24HourInternalDisplay()
     {
-        int hour = hours.getValue(); 
-        
-        if (hour > 12) 
-        {
-           hour = hours.getValue() - 12;
-        } else if (hour < 10) 
-        {
-            value = "0" + hour; 
-        } else 
-        {
-            value = "" + hour;
-        }
-        
-        return value; 
-        
         int hour = hours.getValue();  
        
         if(hour >= 12 && hour < 24) {
@@ -120,13 +105,9 @@ public class ClockDisplay
              
         else setTime(hours.getValue(), minutes.getValue());
             }
- 
+  
          return displayString;
-    }   
-    
-    
-    
-    /*
-       */
+       
+    }  
      
 }
