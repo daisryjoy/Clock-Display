@@ -107,10 +107,7 @@ public class ClockDisplay
              
         else setTime(hours.getValue(), minutes.getValue());
             }
-        
-       
-    
-        
+ 
         
          return displayString;
        
